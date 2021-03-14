@@ -1,32 +1,37 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const ReposPagination = ({ page, setPage, lastPage }) => {
+const ReposPagination = ({ page, setPage, lastPage, user }) => {
+  const incrementPage = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
+
+  const decrementPage = () => {
+    setPage((prevPage) => prevPage - 1);
+  };
+
   return (
-    <div>
-      <div className="mx-auto mt-10 flex justify-center items-center gap-5">
-        <button
-          className="bg-blue-500 text-white px-2 py-1 hover:bg-blue-600 focus:outline-none"
-          onClick={
-            () => (page === 1 ? null : setPage((prevPage) => prevPage - 1)) // Change page
-          }
-          disabled={page === 1} // Disable button at page 1
-        >
-          Previous Page
-        </button>
-        {/* Page number Display */}
+    <>
+      <div className="flex items-center justify-center gap-5 mx-auto mt-10">
+        <Link to={`/${user}/repos/${page - 1}`}>
+          <button className="btn-pagination" onClick={decrementPage} disabled={page === 1}>
+            <i className="material-icons">keyboard_arrow_left</i>
+          </button>
+        </Link>
+
         {page}
-        <button
-          className="bg-blue-500 text-white px-2 py-1 hover:bg-blue-600 focus:outline-none"
-          onClick={
-            () =>
-              page === lastPage ? null : setPage((prevPage) => prevPage + 1) // Change page
-          }
-          disabled={page === lastPage} // Disable button at last page
-        >
-          Next Page
-        </button>
+
+        <Link to={`/${user}/repos/${page + 1}`}>
+          <button
+            className="btn-pagination"
+            onClick={incrementPage}
+            disabled={page === lastPage} // Disable button at last page
+          >
+            <i className="material-icons">keyboard_arrow_right</i>
+          </button>
+        </Link>
       </div>
-    </div>
+    </>
   );
 };
 

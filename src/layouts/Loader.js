@@ -1,12 +1,12 @@
 import React from "react";
-import loader from "../images/loader.svg";
+import loader from "../assets//images/loader.svg";
 
-function Loader() {
+const Loader = () => {
   return (
     <div>
       <img src={loader} alt="Loading..." className="mx-auto mt-32" />
     </div>
   );
-}
+};
 
 export default Loader;
