@@ -1,4 +1,4 @@
-## [Demo](https://react-github-user.web.app/)
+## Click here to preview the [demo](https://react-github-user.web.app/) of the app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
