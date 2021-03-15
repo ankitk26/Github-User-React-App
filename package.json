@@ -1,7 +1,6 @@
 {
   "name": "github_users",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@craco/craco": "^6.1.1",
     "@testing-library/jest-dom": "^4.2.4",
