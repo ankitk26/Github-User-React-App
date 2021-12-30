@@ -1,4 +1,17 @@
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import useCopyClipboard from "react-use-clipboard";
+
 const Repo = ({ repo }) => {
+  const [, setCopied] = useCopyClipboard(repo.clone_url);
+
+  const copyUrl = () => {
+    setCopied();
+    toast("Copied to clipboard", {
+      autoClose: 2000,
+    });
+  };
+
   return (
     <div className="w-full p-5 my-6 bg-gray-200 text-md" key={repo.id}>
       <div className="flex items-center max-w-full gap-12 mt-2">
@@ -31,7 +44,14 @@ const Repo = ({ repo }) => {
           {/* Clone url of repo */}
           <div>
             <span className="font-semibold text-gray-900">Clone url: </span>
-            <p className="text-gray-600 break-words">{repo.clone_url}</p>
+            <button
+              className="text-left text-gray-600 break-words hover:underline"
+              type="button"
+              onClick={copyUrl}
+            >
+              {repo.clone_url}
+            </button>
+            <ToastContainer />
           </div>
         </div>
       </div>
