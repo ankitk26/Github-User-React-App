@@ -1,21 +1,18 @@
-import React from "react";
-
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
-
 import Header from "./layouts/Header";
-import UserRepos from "./pages/UserRepos";
 import Home from "./pages/Home";
+import UserRepos from "./pages/UserRepos";
 
 const App = () => {
   return (
     <UserProvider>
       <Router>
         <Header />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/:username/repos/:pageNumber" component={UserRepos} />
-        </Switch>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/:username/repos/:pageNumber" element={<UserRepos />} />
+        </Routes>
       </Router>
     </UserProvider>
   );

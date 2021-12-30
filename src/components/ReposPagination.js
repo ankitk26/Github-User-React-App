@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const ReposPagination = ({ page, setPage, lastPage, user }) => {
@@ -14,7 +13,11 @@ const ReposPagination = ({ page, setPage, lastPage, user }) => {
     <>
       <div className="flex items-center justify-center gap-5 mx-auto mt-10">
         <Link to={`/${user}/repos/${page - 1}`}>
-          <button className="btn-pagination" onClick={decrementPage} disabled={page === 1}>
+          <button
+            className="btn-pagination"
+            onClick={decrementPage}
+            disabled={page === 1}
+          >
             <i className="material-icons">keyboard_arrow_left</i>
           </button>
         </Link>

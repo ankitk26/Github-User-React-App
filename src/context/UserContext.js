@@ -1,16 +1,15 @@
-import React, { createContext, useReducer } from "react";
 import axios from "axios";
-
-import reducer from "./reducer";
+import { createContext, useContext, useReducer } from "react";
 import {
+  CLEAR_ALL,
   CLEAR_ERROR,
   SET_ERROR,
-  USER_FETCH_ERROR,
   START_FETCHING,
+  USER_FETCH_ERROR,
   USER_FETCH_SUCCESS,
-  CLEAR_ALL,
   USER_REPOS_SUCCESS,
 } from "./actions";
+import reducer from "./reducer";
 
 // Initial state
 const initialState = {
@@ -42,7 +41,9 @@ export const UserProvider = ({ children }) => {
   const fetchRepos = async (user, page) => {
     dispatch({ type: START_FETCHING });
     try {
-      const { data } = await axios.get(`${BASE_URL}/${user}/repos?page=${page}`);
+      const { data } = await axios.get(
+        `${BASE_URL}/${user}/repos?page=${page}`
+      );
       dispatch({ type: USER_REPOS_SUCCESS, payload: data });
     } catch (err) {
       console.log(err);
@@ -84,3 +85,5 @@ export const UserProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
+
+export const useUser = () => useContext(UserContext);

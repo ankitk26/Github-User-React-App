@@ -1,8 +1,7 @@
-import React from "react";
-import UserInfo from "../components/githubUser/UserInfo";
-import UserInputForm from "../components/githubUser/UserInputForm";
+import UserInfo from "../components/UserInfo";
+import UserInputForm from "../components/UserInputForm";
 
-const GithubUser = () => {
+const Home = () => {
   return (
     <>
       <UserInputForm />
@@ -11,4 +10,4 @@ const GithubUser = () => {
   );
 };
 
-export default GithubUser;
+export default Home;
