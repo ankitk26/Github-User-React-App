@@ -1,13 +1,12 @@
-import { useSnackbar } from "react-simple-snackbar";
 import useCopyClipboard from "react-use-clipboard";
+import { message } from "react-message-popup";
 
 const Repo = ({ repo }) => {
   const [, setCopied] = useCopyClipboard(repo.clone_url);
-  const [openSnackbar] = useSnackbar();
 
   const copyUrl = () => {
     setCopied();
-    openSnackbar("Copied to clipboard");
+    message.success("Copied to clipboard", 1500);
   };
 
   return (

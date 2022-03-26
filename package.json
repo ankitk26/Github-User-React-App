@@ -6,13 +6,13 @@
     "parse-link-header": "^2.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-message-popup": "^0.2.0",
     "react-router-dom": "^6.2.2",
     "react-scripts": "^5.0.0",
-    "react-simple-snackbar": "^1.1.11",
     "react-use-clipboard": "^1.0.7"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
