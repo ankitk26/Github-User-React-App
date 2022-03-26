@@ -1,15 +1,13 @@
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useSnackbar } from "react-simple-snackbar";
 import useCopyClipboard from "react-use-clipboard";
 
 const Repo = ({ repo }) => {
   const [, setCopied] = useCopyClipboard(repo.clone_url);
+  const [openSnackbar] = useSnackbar();
 
   const copyUrl = () => {
     setCopied();
-    toast("Copied to clipboard", {
-      autoClose: 2000,
-    });
+    openSnackbar("Copied to clipboard");
   };
 
   return (
@@ -20,7 +18,7 @@ const Repo = ({ repo }) => {
           {/* Link to the repository */}
           <h1 className="text-2xl font-semibold text-blue-500 break-words hover:underline">
             <a
-              href={`//github.com/${repo.owner.login}/${repo.name}`}
+              href={`https://github.com/${repo.owner.login}/${repo.name}`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -43,7 +41,7 @@ const Repo = ({ repo }) => {
 
           {/* Clone url of repo */}
           <div>
-            <span className="font-semibold text-gray-900">Clone url: </span>
+            <span className="font-semibold text-gray-900">Clone URL: </span>
             <button
               className="text-left text-gray-600 break-words hover:underline"
               type="button"
@@ -51,7 +49,6 @@ const Repo = ({ repo }) => {
             >
               {repo.clone_url}
             </button>
-            <ToastContainer />
           </div>
         </div>
       </div>
